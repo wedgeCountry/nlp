@@ -7,41 +7,22 @@ import requests
 import re
 import json
 import glob
-
-UNKNOWN_FORMAT = 0
-APPELLATION_FORMAT_0 = 1
-APPELLATION_FORMAT_1 = 2
-APPELLATION_FORMAT_2 = 3
-HEADERS = {
-    'user-agent': ('Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 '
-                '(KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36')
-}
     
 class Scraper(object):
     """
-    Scraper code taken from 
+    Scraper base class. code taken from 
     https://github.com/zackthoutt/wine-deep-learning/
     """
+    HEADERS = {
+        'user-agent': ('Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 '
+                    '(KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36')
+    }
+
     def __init__(self, num_jobs=1):
         object.__init__(self)
         self.session = requests.Session()
         self.set_num_jobs(num_jobs)
         self.start_time = time.time()
-        
-    def set_num_jobs(self, num_jobs):
-        self.num_jobs = num_jobs
-        if self.num_jobs > 1:
-            self.multiprocessing = True
-            self.worker_pool = Pool(self.num_jobs)
-        else:
-            self.multiprocessing = False
-
-    def scrape_pages_for_links(self, pages):
-        """ get a list of links for further scraping """
-        links = []
-        for page in pages:
-            links.extend(self.scrape_page_for_links(page))
-        return links
         
     def scrape_pages(self, pages):
         """ scrape a list of links for specific info which can be saved as json, e.g. """
@@ -57,13 +38,18 @@ class Scraper(object):
         
     def scrape_page(self, page_url):
         raise NotImplementedError("derive from this class!")
-
-    def scrape_page_for_links(self, page_url):
-        raise NotImplementedError("derive from this class!")   
+        
+    def set_num_jobs(self, num_jobs):
+        self.num_jobs = num_jobs
+        if self.num_jobs > 1:
+            self.multiprocessing = True
+            self.worker_pool = Pool(self.num_jobs)
+        else:
+            self.multiprocessing = False
         
     def get_response_content(self, page_url, retry_count=0):
         try:
-            response = self.session.get(page_url, headers=HEADERS)
+            response = self.session.get(page_url, headers=self.HEADERS)
         except:
             retry_count += 1
             if retry_count <= 3:
