@@ -1,7 +1,7 @@
 
-
+import os
 import json
-import randoms
+import random
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
@@ -16,7 +16,11 @@ from sklearn.decomposition import PCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from collections import defaultdict
 
-with open("winemag-data-130k-v2.json", "r") as wfile:
+winemag = "winemag-data-130k-v2.json"
+if not os.path.isfile(winemag):
+    raise Exception("File not found: please download the winemag data from https://www.kaggle.com/zynicide/wine-reviews")
+
+with open(winemag, "r") as wfile:
     wine = json.load(wfile)
 
 how_many = 10000
