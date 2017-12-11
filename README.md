@@ -7,6 +7,7 @@ Windemag data and Scraper concept: https://www.kaggle.com/zynicide/wine-reviews
 pytorch and RNN: https://github.com/spro/practical-pytorch/blob/master/char-rnn-generation/char-rnn-generation.ipynb
 
 **Some links for my research: **
+
 https://ai-hack.slack.com/
 http://projector.tensorflow.org/
 https://www.tensorflow.org/get_started/summaries_and_tensorboard
