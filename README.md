@@ -1,10 +1,12 @@
-Some experiments I am doing with Natural Language Processing Tools.
-Basically most of the code and data I am using here, I found somewhere else.
+**Some experiments I am doing with Natural Language Processing Tools.**
+
+Most of the code and data I am using here, I found somewhere else.
 
 Windemag data and Scraper concept: https://www.kaggle.com/zynicide/wine-reviews
+
 pytorch and RNN: https://github.com/spro/practical-pytorch/blob/master/char-rnn-generation/char-rnn-generation.ipynb
 
-Some links for my research: 
+**Some links for my research: **
 https://ai-hack.slack.com/
 http://projector.tensorflow.org/
 https://www.tensorflow.org/get_started/summaries_and_tensorboard
