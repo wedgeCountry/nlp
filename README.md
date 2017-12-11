@@ -21,3 +21,7 @@ https://en.oxforddictionaries.com/grammar/word-classes-or-parts-of-speech#noun
 https://www.oxfordlearnersdictionaries.com/wordlist/
 
 
+
+word2vec 
+https://www.quora.com/How-does-word2vec-work-Can-someone-walk-through-a-specific-example
+
