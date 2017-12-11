@@ -205,7 +205,3 @@ if __name__ == '__main__':
         json.dump(word_dict, jfile, sort_keys=True, indent=4)
     print("DONE")
     
-
-    # word2vec 
-    # 
-    # https://www.quora.com/How-does-word2vec-work-Can-someone-walk-through-a-specific-example
